@@ -28,15 +28,20 @@ M.check_buffer = function()
 	for _, line in ipairs(lines) do
 		local success, value = pcall(vim.json.decode, line)
 		if success then
-			vim.notify(vim.inspect(value), vim.log.levels.INFO)
 			local temp = value.message or value.error or ""
-			content = content .. temp .. "\n"
+			if vim.startswith(temp, "No issues found") then
+				vim.notify("No issue found.", vim.log.levels.INFO)
+			else
+				content = content .. temp .. "\n"
+			end
 		end
 	end
 
 	content = content:gsub("\27%[[%d;]+m", "")
 
-	float.create_float_window("Dioxus Check # Buffer", content)
+	if #content > 0 then
+		float.create_float_window("Dioxus Check # Buffer", content)
+	end
 end
 
 return M
