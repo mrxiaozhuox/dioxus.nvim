@@ -49,7 +49,6 @@ M.format_buffer = function()
 	os.remove(temp_file)
 
 	if formatted_content == content then
-		vim.notify("No formatting changes needed", vim.log.levels.INFO)
 		return
 	end
 
@@ -63,8 +62,6 @@ M.format_buffer = function()
 	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, formatted_lines)
 
 	vim.api.nvim_win_set_cursor(0, cursor_pos)
-
-	vim.notify("Dioxus code formatted", vim.log.levels.INFO)
 end
 
 M.format_selection = function()

@@ -9,6 +9,7 @@ M.defaults = {
 
 local translate = require("dioxus.translate")
 local format = require("dioxus.format")
+local check = require("dioxus.check")
 
 -- configure
 M.setup = function(opts)
@@ -41,6 +42,9 @@ M.setup_commands = function()
 	vim.api.nvim_create_user_command("DxFormatBuffer", function()
 		format.format_buffer()
 	end, { range = true, desc = "Format .rs file which include rsx block" })
+	vim.api.nvim_create_user_command("DxCheckBuffer", function()
+		check.check_buffer()
+	end, { range = true, desc = "Check dioxus code" })
 end
 
 -- inital
