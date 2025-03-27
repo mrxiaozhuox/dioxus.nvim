@@ -1,3 +1,6 @@
+# dioxus.nvim
+/test/
+
 # Compiled Lua sources
 luac.out
 
