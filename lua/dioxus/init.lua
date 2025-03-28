@@ -1,6 +1,6 @@
 local M = {}
 
-M.defaults = {
+M.default_opts = {
 	cli_path = nil,
 	format = {
 		split_line_attributes = false,
@@ -13,7 +13,7 @@ local check = require("dioxus.check")
 
 -- configure
 M.setup = function(opts)
-	M.opts = vim.tbl_deep_extend("force", M.defaults, opts or {})
+	M.opts = vim.tbl_deep_extend("force", M.default_opts, opts or {})
 
 	local cli = require("dioxus.cli")
 	if M.opts.cli_path then
