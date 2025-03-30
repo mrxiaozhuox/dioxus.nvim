@@ -25,3 +25,11 @@
   ft = "rust",
 },
 ```
+
+## Commands
+
+- `DxFormatBuffer`
+- `DxFormatInline`
+- `DxTranslateInline`
+- `DxTranslatePrompt`
+- `DxCheckBuffer`
