@@ -52,10 +52,7 @@ M.format_buffer = function()
 		return
 	end
 
-	local formatted_lines = {}
-	for line in string.gmatch(formatted_content, "[^\r\n]+") do
-		table.insert(formatted_lines, line)
-	end
+	local formatted_lines = vim.split(formatted_content, "\n", { trimempty = true })
 
 	local cursor_pos = vim.api.nvim_win_get_cursor(0)
 
@@ -87,10 +84,7 @@ M.format_selection = function()
 	local end_line_text = vim.api.nvim_buf_get_lines(start_buf, end_row - 1, end_row, false)[1] or ""
 	local actual_end_col = math.min(end_col, #end_line_text)
 
-	local output_lines = {}
-	for line in string.gmatch(output, "[^\r\n]+") do
-		table.insert(output_lines, line)
-	end
+	local output_lines = vim.split(output, "\n", { trimempty = true })
 
 	if #output_lines == 0 then
 		output_lines = { "" }
